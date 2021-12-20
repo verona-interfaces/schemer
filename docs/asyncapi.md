@@ -9,7 +9,7 @@ The html page MUST contain a <script>-tag with metadata. The syntax and structur
 
 ## Channels
 
-### **voeReadyNotification** Channel
+### **vosReadyNotification** Channel
 
 #### `subscribe` Operation
 
