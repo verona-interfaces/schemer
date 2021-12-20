@@ -36,7 +36,7 @@ The schemer announces that it's code is loaded and initialized so the communicat
 
 
 
-### **voeStartCommand** Channel
+### **vosStartCommand** Channel
 
 #### `publish` Operation
 
