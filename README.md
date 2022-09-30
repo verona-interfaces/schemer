@@ -14,6 +14,11 @@ Read the spec here:
 The schemer file must contain of one script tag for metadata as json-ld. The syntax and elements are described [here](https://github.com/verona-interfaces/metadata).
 
 ## release notes
+### 1.0.0
+* drop `vosGetSchemeRequest`: The schemer sends all data on every `vosSchemeChangedNotification`
+* drop `schemerConfig` in `vosStartCommand`, because there is no need for `definitionReportPolicy` anymore 
+* add `variables` to `vosSchemeChangedNotification` to send list of derived variables
+
 ### 0.1
 * first draft
 
