@@ -14,6 +14,10 @@ Read the spec here:
 The schemer file must contain of one script tag for metadata as json-ld. The syntax and elements are described [here](https://github.com/verona-interfaces/metadata).
 
 ## release notes
+### 1.1.0
+* add `dependenciesToCode` to announce requirements for the coding process
+* add `schemerConfig` again for `directDownloadUrl` to get additional code from the hosting server
+
 ### 1.0.0
 * drop `vosGetSchemeRequest`: The schemer sends all data on every `vosSchemeChangedNotification`
 * drop `schemerConfig` in `vosStartCommand`, because there is no need for `definitionReportPolicy` anymore 
@@ -25,4 +29,4 @@ The schemer file must contain of one script tag for metadata as json-ld. The syn
 ## For Contributors
 The api is written as [async api](https://www.asyncapi.com) yaml file. After editing, we create markdown and html files for better reading.
 
-To ease that post processing, we use [node.js](https://nodejs.org). The repo contains a package.json. By running `npm install` you get the tool `@asyncapi/generator` and two templates. Run `npm run ag` to recreate html and markdown representations of the api.
+To ease that post-processing, we use [node.js](https://nodejs.org). The repo contains a package.json. By running `npm install` you get the tool `@asyncapi/generator` and two templates. Run `npm run ag` to recreate html and markdown representations of the api.
