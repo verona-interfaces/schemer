@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Inferfaces Specification "Schemer"
-  version: '1.1.0'
+  version: '2.0.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The schemer takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the schemer.
@@ -112,7 +112,7 @@ channels:
               description: In order to understand the coding scheme outside the schemer, the type of the scheme should be known. This helps to select a suitable coder to run coding.
               example: 'iqb@1.0'
             variables:
-              description: List of derived variables from coding scheme. Because there is no specification available for the coding scheme, this list is important to assign metadata to variables (items!).
+              description: List of all variables from coding scheme including derived variables. Reading this might be important even for base variables, because as part of the coding scheme, a label can be given for all variables.
               type: array
               items:
                 $ref: "#/components/schemas/Variable"
@@ -140,54 +140,15 @@ components:
         id:
           type: string
           example: 'ME3491a'
-        type:
+        label:
           type: string
-          description: Data type of the value. Additionally, the value might be of type `null` if `nullable` property below is set `true`.
-          enum:
-            - string
-            - integer
-            - number
-            - boolean
-            - attachment
-          example: 'boolean'
-        format:
+          example: 'Part of item 3 b)'
+        page:
           type: string
-          description: Some more information to specify the data type of the value. Every editor might introduce special formats to support answer processing. One example at IQB is 'text-selection' to store text markings in the form of '85-113-orange'.
-          enum:
-            - text-selection
-            - image
-            - capture-image
-            - audio
-            - ggb-file
-            - non-negative
-          example: 'capture-image'
-        multiple:
-          type: boolean
-          description: If true, the value can contain multiple values as array of same type.
-        nullable:
-          type: boolean
-          description: If true, the value can be `null` instead of type above. In this case, the value `null` represents a response different to empty or 0.
-        values:
-          description: This list contains of possible values of the variable.
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-                example: '1'
-              label:
-                type: string
-                description: Label to describe the value. If - for example - there are options to select and these options are stored as numbers 1/2/3 etc., the label can help to identify the selected option in dialogs and analyses.
-                example: 'I love Berlin.'
-            required:
-              - value
-        valuesComplete:
-          type: boolean
-          description: If true, the list of possible values contains of ALL possible values.
+          description: The location of the value source if available.
+          example: 'Part of item 3 b)'
       required:
         - id
-        - type
 
     Dependency:
       type: object

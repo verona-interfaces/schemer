@@ -14,6 +14,10 @@ Read the spec here:
 The schemer file must contain of one script tag for metadata as json-ld. The syntax and elements are described [here](https://github.com/verona-interfaces/metadata).
 
 ## release notes
+
+### 2.0.0
+* change data type and content of `variables` property in `vosSchemeChangedNotification`: Now, all variables are listed (base and derived) and no info is given but `id`, `label` and `page`
+
 ### 1.1.0
 * add `dependenciesToCode` to announce requirements for the coding process
 * add `schemerConfig` again for `directDownloadUrl` to get additional code from the hosting server
