@@ -1,4 +1,4 @@
-# Verona Inferfaces Specification "Schemer" 1.1.0 documentation
+# Verona Inferfaces Specification "Schemer" 2.0.0 documentation
 
 * License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 * Support: [Institute for Educational Quality Improvement (IQB)](https://www.iqb.hu-berlin.de)
@@ -66,15 +66,9 @@ The application sends parameters for editing the coding scheme and commands the 
 | codingSchemeType | string | This lets the schemer the coding scheme format know. This might avoid UI mess after getting old schemes. | - | - | - |
 | variables | array<object> | Data of variables from unit definition. These variables represent the states of controls during assessment and form the basis of all coding. We call these variables 'base variables'. | - | - | - |
 | variables.id | string | - | - | - | **required** |
-| variables.type | string | Data type of the value. Additionally, the value might be of type `null` if `nullable` property below is set `true`. | allowed (`"string"`, `"integer"`, `"number"`, `"boolean"`, `"attachment"`) | - | **required** |
-| variables.format | string | Some more information to specify the data type of the value. Every editor might introduce special formats to support answer processing. One example at IQB is 'text-selection' to store text markings in the form of '85-113-orange'. | allowed (`"text-selection"`, `"image"`, `"capture-image"`, `"audio"`, `"ggb-file"`, `"non-negative"`) | - | - |
-| variables.multiple | boolean | If true, the value can contain multiple values as array of same type. | - | - | - |
-| variables.nullable | boolean | If true, the value can be `null` instead of type above. In this case, the value `null` represents a response different to empty or 0. | - | - | - |
-| variables.values | array<object> | This list contains of possible values of the variable. | - | - | - |
-| variables.values.value | string | - | - | - | **required** |
-| variables.values.label | string | Label to describe the value. If - for example - there are options to select and these options are stored as numbers 1/2/3 etc., the label can help to identify the selected option in dialogs and analyses. | - | - | - |
-| variables.valuesComplete | boolean | If true, the list of possible values contains of ALL possible values. | - | - | - |
-| schemerConfig | object | This data supplies some information or instruction about this specific editing of the response scheme. | - | - | **additional properties are allowed** |
+| variables.label | string | - | - | - | - |
+| variables.page | string | The location of the value source if available. | - | - | - |
+| schemerConfig | object | - | - | - | **additional properties are allowed** |
 | schemerConfig.directDownloadUrl | string | After starting the schemer and loading the scheme, it might be necessary to load additional code or data from the server. This data is identified by an resource ID (usually a file name). The schemer can download this resource by itself without further interaction with the host frontend. The property directDownloadUrl provides the url for download. The schemer extends this url by an url separator "/" and the resource ID (uri-encoded if needed). | - | - | - |
 
 > Examples of payload _(generated)_
@@ -87,17 +81,8 @@ The application sends parameters for editing the coding scheme and commands the 
   "variables": [
     {
       "id": "ME3491a",
-      "type": "boolean",
-      "format": "capture-image",
-      "multiple": true,
-      "nullable": true,
-      "values": [
-        {
-          "value": "1",
-          "label": "I love Berlin."
-        }
-      ],
-      "valuesComplete": true
+      "label": "Part of item 3 b)",
+      "page": "Part of item 3 b)"
     }
   ],
   "schemerConfig": {
@@ -129,16 +114,10 @@ The coding scheme of the unit has changed.
 | timeStamp | string | Ensures, that later arriving states are ignored. | - | format (`date-time`) | **required** |
 | codingScheme | string | To be stored. | - | format (`byte`) | **required** |
 | codingSchemeType | string | In order to understand the coding scheme outside the schemer, the type of the scheme should be known. This helps to select a suitable coder to run coding. | - | - | **required** |
-| variables | array<object> | List of derived variables from coding scheme. Because there is no specification available for the coding scheme, this list is important to assign metadata to variables (items!). | - | - | - |
+| variables | array<object> | List of all variables from coding scheme including derived variables. Reading this might be important even for base variables, because as part of the coding scheme, a label can be given for all variables. | - | - | - |
 | variables.id | string | - | - | - | **required** |
-| variables.type | string | Data type of the value. Additionally, the value might be of type `null` if `nullable` property below is set `true`. | allowed (`"string"`, `"integer"`, `"number"`, `"boolean"`, `"attachment"`) | - | **required** |
-| variables.format | string | Some more information to specify the data type of the value. Every editor might introduce special formats to support answer processing. One example at IQB is 'text-selection' to store text markings in the form of '85-113-orange'. | allowed (`"text-selection"`, `"image"`, `"capture-image"`, `"audio"`, `"ggb-file"`, `"non-negative"`) | - | - |
-| variables.multiple | boolean | If true, the value can contain multiple values as array of same type. | - | - | - |
-| variables.nullable | boolean | If true, the value can be `null` instead of type above. In this case, the value `null` represents a response different to empty or 0. | - | - | - |
-| variables.values | array<object> | This list contains of possible values of the variable. | - | - | - |
-| variables.values.value | string | - | - | - | **required** |
-| variables.values.label | string | Label to describe the value. If - for example - there are options to select and these options are stored as numbers 1/2/3 etc., the label can help to identify the selected option in dialogs and analyses. | - | - | - |
-| variables.valuesComplete | boolean | If true, the list of possible values contains of ALL possible values. | - | - | - |
+| variables.label | string | - | - | - | - |
+| variables.page | string | The location of the value source if available. | - | - | - |
 | dependenciesToCode | array<object> | Files to provide or services to keep accessible during the coding of responses to the items of the unit. | - | - | - |
 | dependenciesToCode.id | string | - | - | - | **required** |
 | dependenciesToCode.type | string | - | allowed (`"file"`, `"service"`) | - | **required** |
@@ -154,17 +133,8 @@ The coding scheme of the unit has changed.
   "variables": [
     {
       "id": "ME3491a",
-      "type": "boolean",
-      "format": "capture-image",
-      "multiple": true,
-      "nullable": true,
-      "values": [
-        {
-          "value": "1",
-          "label": "I love Berlin."
-        }
-      ],
-      "valuesComplete": true
+      "label": "Part of item 3 b)",
+      "page": "Part of item 3 b)"
     }
   ],
   "dependenciesToCode": [
