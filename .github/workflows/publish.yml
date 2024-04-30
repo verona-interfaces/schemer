@@ -24,8 +24,11 @@ jobs:
       - run: |
           npm ci
           npm run generate
-      - uses: actions/deploy-pages@v4
+      - uses: actions/upload-artifact@v4
         with:
-          target: gh-pages
+          name: docs
+          path: docs
+          overwrite: true
+      - uses: actions/deploy-pages@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
