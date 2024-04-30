@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Inferfaces Specification "Schemer"
-  version: '2.0.0'
+  version: '3.0.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The schemer takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the schemer.
