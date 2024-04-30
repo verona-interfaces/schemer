@@ -6,7 +6,7 @@
     "url": "https://github.com/verona-interfaces/schemer"
   },
   "scripts": {
-    "generate": "ag -o ./ ./schemerapi.yaml @asyncapi/html-template --force-write -p singleFile=true"
+    "generate": "ag -o ./docs ./schemerapi.yaml @asyncapi/html-template --force-write -p singleFile=true"
   },
   "devDependencies": {
     "@asyncapi/cli": "^1.9.2"

@@ -26,8 +26,8 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: index.html
-          path: index.html
+          name: docs
+          path: docs
           overwrite: true
           target: gh-pages
         env:
