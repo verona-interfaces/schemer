@@ -37,6 +37,8 @@ jobs:
           mv docs/index.html index.html
           git status
           ls -lisa
+          git add index.html
+          git status
       - uses: EndBug/add-and-commit@v9
         with:
           new_branch: gh-pages
