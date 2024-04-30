@@ -22,19 +22,15 @@ jobs:
         with:
          node-version: 18
       - run: |
+          git checkout gh-pages
+          git merge --ff-only main || die "cannot fast-forward our master"
+          git merge -X theirs main || die "complex merge conflict"
           npm ci
           npm run generate
-      - uses: actions/upload-artifact@v4
-        with:
-          name: docs
-          path: docs
-          retention-days: 1
-          overwrite: true
-      - name: Move Html
-        run: |
           mv docs/index.html index.html
-      - uses: EndBug/add-and-commit@v9
-        with:
-          new_branch: gh-pages
+          git add index.html
+          git status
+          git commit -m "update gh-pages"
+          git push -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
