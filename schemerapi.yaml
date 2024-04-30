@@ -9,11 +9,11 @@ info:
     Most important, the message body carries as first parameter the operationId of the message.
 
     The html page MUST contain a script-tag with metadata. The syntax and structure of this data are described
-    [here](https://github.com/verona-interfaces/metadata/#readme).
+    [here](https://verona-interfaces.github.io/intro/metadata.html).
 
   license:
-    name: CC BY-SA 4.0
-    url: https://creativecommons.org/licenses/by-sa/4.0/
+    name: CC0-1.0
+    url: http://creativecommons.org/publicdomain/zero/1.0/
   contact:
     name: Institute for Educational Quality Improvement (IQB)
     url: https://www.iqb.hu-berlin.de
@@ -32,7 +32,7 @@ channels:
           properties:
             metadata:
               type: string
-              description: Via this property, the schemer sends the stringified metadata object definied as json-ld in the header of the html file. See [here](https://github.com/verona-interfaces/metadata/#readme) for more information.
+              description: Via this property, the schemer sends the stringified metadata object definied as json-ld in the header of the html file. See [here](https://verona-interfaces.github.io/intro/metadata.html) for more information.
           required:
             - metadata
 
@@ -111,11 +111,6 @@ channels:
               type: string
               description: In order to understand the coding scheme outside the schemer, the type of the scheme should be known. This helps to select a suitable coder to run coding.
               example: 'iqb@1.0'
-            variables:
-              description: List of all variables from coding scheme including derived variables. Reading this might be important even for base variables, because as part of the coding scheme, a label can be given for all variables.
-              type: array
-              items:
-                $ref: "#/components/schemas/Variable"
             dependenciesToCode:
               description: Files to provide or services to keep accessible during the coding of responses to the items of the unit.
               type: array
@@ -135,20 +130,7 @@ components:
       example: 'idk8ur5jf9ru5jk'
 
     Variable:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 'ME3491a'
-        label:
-          type: string
-          example: 'Part of item 3 b)'
-        page:
-          type: string
-          description: The location of the value source if available.
-          example: 'Part of item 3 b)'
-      required:
-        - id
+      $ref: 'variable.schema.json'
 
     Dependency:
       type: object

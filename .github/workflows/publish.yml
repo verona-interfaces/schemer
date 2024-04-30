@@ -24,8 +24,6 @@ jobs:
       - run: |
           npm ci
           npm run generate
-          git status
-          ls ./docs -lisa
       - uses: actions/upload-artifact@v4
         with:
           name: docs
@@ -35,10 +33,6 @@ jobs:
       - name: Move Html
         run: |
           mv docs/index.html index.html
-          git status
-          ls -lisa
-          git add index.html
-          git status
       - uses: EndBug/add-and-commit@v9
         with:
           new_branch: gh-pages
