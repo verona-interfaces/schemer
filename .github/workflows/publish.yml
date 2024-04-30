@@ -24,8 +24,7 @@ jobs:
       - run: |
           git fetch origin
           git checkout gh-pages
-          git merge --ff-only main || die "cannot fast-forward our master"
-          git merge -X theirs main || die "complex merge conflict"
+          git merge -X theirs main
           npm ci
           npm run generate
           mv docs/index.html index.html
