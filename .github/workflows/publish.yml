@@ -22,6 +22,7 @@ jobs:
         with:
          node-version: 18
       - run: |
+          git fetch origin
           git checkout gh-pages
           git merge --ff-only main || die "cannot fast-forward our master"
           git merge -X theirs main || die "complex merge conflict"
