@@ -1,16 +1,13 @@
 {
   "name": "verona-interfaces_specification_schemer",
-  "version": "3.0.0",
   "license": "CC0-1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/verona-interfaces/schemer"
   },
   "scripts": {
-    "ag": "ag -o ./docs ./api/schemerapi.yaml @asyncapi/markdown-template --force-write",
-    "postag": "ag -o ./docs ./api/schemerapi.yaml @asyncapi/html-template --force-write"
+    "generate": "ag -o ./ ./schemerapi.yaml @asyncapi/html-template --force-write -p singleFile=true"
   },
-  "private": true,
   "devDependencies": {
     "@asyncapi/cli": "^1.9.2"
   }
