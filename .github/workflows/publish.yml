@@ -33,10 +33,12 @@ jobs:
           npm ci
           npm run generate
           mv docs/index.html index.html
-          ls
       - name: Push changes
         run: |
+          echo pre-add-status---------------
+          git status
           git add index.html
+          echo post-add-status--------------
           git status
           git commit -m "update gh-pages"
           git push -f
