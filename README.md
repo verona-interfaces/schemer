@@ -36,4 +36,13 @@ The schemer file must contain of one script tag for metadata as json-ld. The syn
 * first draft
 
 ## For Contributors
-The api is written as [async api](https://www.asyncapi.com/de) yaml file. After committing to main branch, a GitHub action is triggered to build the html page.
+This api is written as [async api](https://www.asyncapi.com/de) yaml file. After committing to main branch, a GitHub action is triggered to build the html page. Don't forget to update the version and the release notes in `README.md`. Then, create an release.
+
+If you like to check the html page before committing to main branch, 
+
+* have an npm/node.js-environment installed
+* check out the repo
+* run `npm install`
+* run the `generate` script in package.json.
+
+After that, you can check `docs/index.html` in a browser. This file will be ignored by git.
