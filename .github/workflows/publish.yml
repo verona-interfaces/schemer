@@ -27,7 +27,7 @@ jobs:
           git config --global user.email "mechtel@iqb.hu-berlin.de"
           git config --global user.name "Martin Mechtel"
           git checkout gh-pages
-          git merge -X theirs main --allow-unrelated-histories
+          git reset --hard main
       - name: Run html generation
         run: |
           npm ci
@@ -35,11 +35,7 @@ jobs:
           mv docs/index.html index.html
       - name: Push changes
         run: |
-          echo pre-add-status---------------
-          git status
           git add index.html
-          echo post-add-status--------------
-          git status
           git commit -m "update gh-pages"
           git push -f
         env:
