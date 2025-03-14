@@ -15,6 +15,9 @@ The schemer file must contain of one script tag for metadata as json-ld. The syn
 
 ## release notes
 
+### 3.1.0
+* add `no-value`, `json` and `coded` to variable types (apply [variable-info](https://github.com/verona-interfaces/variable-info) v1.3)
+
 ### 3.0.0
 * change data type and content of `variables` property in `vosStartCommand` to match the data structure coming from editor
 * drop `variables` in `vosSchemeChangedNotification`
